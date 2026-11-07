@@ -42,3 +42,8 @@ It provides secure authentication, role-based access control, project management
 - Docker
 - Render
 - Git & GitHub
+
+## Prerequisites
+
+- Docker Desktop
+- Git
