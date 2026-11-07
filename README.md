@@ -47,3 +47,13 @@ It provides secure authentication, role-based access control, project management
 
 - Docker Desktop
 - Git
+
+## API Documentation
+
+DeployHub provides interactive API documentation using Swagger UI.
+
+After starting the application, access:
+
+http://localhost:8080/swagger-ui/index.html
+
+Users can explore available endpoints, view request/response formats, and test APIs directly through Swagger UI.
