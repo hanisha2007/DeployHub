@@ -57,3 +57,31 @@ After starting the application, access:
 http://localhost:8080/swagger-ui/index.html
 
 Users can explore available endpoints, view request/response formats, and test APIs directly through Swagger UI.
+
+## Project Structure
+
+```text
+DeployHub/
+│
+├── .mvn/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/com/deployhub/
+│   │   │   ├── controller/    # Handles incoming API requests
+│   │   │   ├── dto/           # Data Transfer Objects
+│   │   │   ├── exception/     # Global exception handling
+│   │   │   ├── model/         # Entity classes
+│   │   │   ├── repository/    # Database operations
+│   │   │   ├── security/      # JWT and security configuration
+│   │   │   ├── service/       # Business logic
+│   │   │   └── DeployHubApplication.java
+│   │   │
+│   │   └── resources/         # Application configuration
+│   │
+│   └── test/                  # Test files
+│
+├── .gitattributes
+├── .gitignore
+├── Dockerfile
+└── README.md
