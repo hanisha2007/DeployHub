@@ -85,3 +85,27 @@ DeployHub/
 ├── .gitignore
 ├── Dockerfile
 └── README.md
+```
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/hanisha2007/DeployHub.git
+cd DeployHub
+```
+
+### 2. Build the Docker Image
+
+docker build -t deployhub .
+
+### 3. Run the Application
+
+docker run -d --name deployhub-container --network deployhub-network -p 8080:8080 deployhub
+
+### 4. Access API Documentation
+
+Open the following URL in your browser:
+
+http://localhost:8080/swagger-ui/index.html
