@@ -22,7 +22,7 @@ It provides secure authentication, role-based access control, project management
 ## Technology Stack
 
 ### Backend
-- Java
+- Java 25
 - Spring Boot
 - Spring Data JPA
 - Spring Security
@@ -96,16 +96,71 @@ git clone https://github.com/hanisha2007/DeployHub.git
 cd DeployHub
 ```
 
-### 2. Build the Docker Image
+### 2. Create a Docker Network
 
+```bash
+docker network create deployhub-network
+```
+
+### 3. Start the PostgreSQL Container
+
+```bash
+docker run -d --name deployhub-db --network deployhub-network -e POSTGRES_DB=deployhub -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=your_password postgres:17
+```
+
+Replace `your_password` with your own PostgreSQL password.
+
+### 4. Build the Docker Image
+
+```bash
 docker build -t deployhub .
+```
 
-### 3. Run the Application
+### 5. Run the Application
 
-docker run -d --name deployhub-container --network deployhub-network -p 8080:8080 deployhub
+```bash
+docker run -d --name deployhub-container --network deployhub-network -p 8080:8080 -e PORT=8080 -e DB_URL=jdbc:postgresql://deployhub-db:5432/deployhub -e DB_USERNAME=postgres -e DB_PASSWORD=your_password deployhub
+```
 
-### 4. Access API Documentation
+Use the same PostgreSQL password configured in Step 3.
+
+### 6. Access API Documentation
 
 Open the following URL in your browser:
 
 http://localhost:8080/swagger-ui/index.html
+
+## Environment Variables
+
+DeployHub uses PostgreSQL as its database.
+
+Before running the application, create a PostgreSQL database named `deployhub` and configure the following environment variables using your own database credentials:
+
+- `DB_URL` – PostgreSQL database connection URL.
+- `DB_USERNAME` – PostgreSQL username.
+- `DB_PASSWORD` – PostgreSQL password.
+- `PORT` – Application port (optional; defaults to 10000).
+
+## Architecture
+
+```text
+    Client (Postman)
+          |
+          v
+     Controllers
+          |
+          v
+       Services
+          |
+          v
+     Repositories
+          |
+          v
+      PostgreSQL
+```
+
+## Deployment
+
+DeployHub is deployed on Render using a PostgreSQL database.
+
+The application is containerized using Docker, making it easier to build and run consistently across different environments.
