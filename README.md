@@ -52,9 +52,11 @@ It provides secure authentication, role-based access control, project management
 
 DeployHub provides interactive API documentation using Swagger UI.
 
-After starting the application, access:
+After starting the application, access Swagger UI using the appropriate URL:
 
-http://localhost:8080/swagger-ui/index.html
+Local execution: http://localhost:10000/swagger-ui/index.html
+
+Docker execution: http://localhost:8080/swagger-ui/index.html
 
 Users can explore available endpoints, view request/response formats, and test APIs directly through Swagger UI.
 
